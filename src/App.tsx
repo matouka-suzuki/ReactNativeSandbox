@@ -9,52 +9,62 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  FlatList
 } from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
 interface Props { }
 interface State { }
 
 export default class App extends React.Component<Props, State> {
+
+  private data: { key: string }[] = [
+    { key: 'a' },
+    { key: 'b' },
+    { key: 'c' },
+    { key: 'd' },
+    { key: 'e' },
+    { key: 'f' },
+    { key: 'g' }
+  ]
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+      <FlatList
+        data={this.data}
+        renderItem={this._renderItem}
+        contentContainerStyle={styles.list}
+        onEndReachedThreshold={0}
+        onEndReached={this._onEndReached}
+        // Use numColomns instead of flex-wrap: 'wrap' in Styles
+        numColumns={2}
+      />
     );
+  }
+
+  private _renderItem = (item: any) => {
+    return (
+      <View style={styles.item} />
+    )
+  }
+
+  private _onEndReached = (info: { distanceFromEnd: number }) => {
+    console.log('onEndReached', info.distanceFromEnd)
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  list: {
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flexDirection: 'column',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  item: {
+    flex: 1,
+    margin: 5,
+    minWidth: 150,
+    maxWidth: 200,
+    height: 304,
+    maxHeight: 304,
+    backgroundColor: '#CCC'
+  }
 });
