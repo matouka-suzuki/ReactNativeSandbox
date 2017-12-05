@@ -4,7 +4,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import * as React from 'react';
 import {
   Platform,
   StyleSheet,
@@ -19,7 +19,10 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component<{}> {
+interface Props { }
+interface State { }
+
+export default class App extends React.Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
