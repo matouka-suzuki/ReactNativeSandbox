@@ -10,15 +10,20 @@ import {
   StyleSheet,
   Text,
   View,
-  FlatList
+  FlatList,
+  ListRenderItem // To specify type of datasource and to get index in rendering method.
 } from 'react-native';
 
 interface Props { }
 interface State { }
 
+interface Model {
+  key: string
+}
+
 export default class App extends React.Component<Props, State> {
 
-  private data: { key: string }[] = [
+  private data: Model[] = [
     { key: 'a' },
     { key: 'b' },
     { key: 'c' },
@@ -36,15 +41,19 @@ export default class App extends React.Component<Props, State> {
         contentContainerStyle={styles.list}
         onEndReachedThreshold={0}
         onEndReached={this._onEndReached}
-        // Use numColomns instead of flex-wrap: 'wrap' in Styles
+        // Use 'numColomns' instead of flex-wrap: 'wrap' in Styles
         numColumns={2}
       />
     );
   }
 
-  private _renderItem = (item: any) => {
+  private _renderItem: ListRenderItem<Model> = info => {
+    const { index, item } = info
     return (
-      <View style={styles.item} />
+      < View style={styles.item} >
+        <Text>{index}</Text>
+        <Text>{item.key}</Text>
+      </View >
     )
   }
 
