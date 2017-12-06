@@ -1,15 +1,24 @@
 import * as React from 'react'
 import { View, FlatList, ListRenderItem } from 'react-native'
+import { connect, Dispatch } from 'react-redux'
 import ListItem from '../components/ListItem'
 
+import * as Actions from '../actions/creators'
+
 interface Props { }
+
+// Props set by mapDispatchToProps
+interface DispatchProps {
+  handleSelectButtonEvent: () => any
+  handleSelectGridLayoutEvent: () => any
+}
 interface State { }
 
 interface Model {
   key: string
 }
 
-class HomeScreen extends React.Component<Props, State>{
+class HomeScreen extends React.Component<Props & DispatchProps, State>{
 
   // This is for React Navigation
   static navigationOptions = {
@@ -42,16 +51,32 @@ class HomeScreen extends React.Component<Props, State>{
   }
 
   private _onSelectItem = (selectedIndex: number) => {
-    console.log('ListItem was selected!! %d', selectedIndex)
     switch (selectedIndex) {
       case 0:
+        let temp = this.props
+        this.props.handleSelectButtonEvent() // call action
         this.props.navigation.navigate("Button")
         break
       case 1:
+        this.props.handleSelectGridLayoutEvent() // call action
         this.props.navigation.navigate("Grid")
         break
     }
   }
 }
 
-export default HomeScreen
+// Mapping state and actions
+// https://stackoverflow.com/a/39519596
+const mapStateToProps = (state: any, ownProps?: Props): Props => {
+  return {}
+}
+
+const mapDispatchToProps = (dispatch: any): DispatchProps => {
+  return {
+    // Need to pass an plain object to dispatch() to call action as prop's method.
+    handleSelectButtonEvent: () => { dispatch(Actions.homeSelectButton()) },
+    handleSelectGridLayoutEvent: () => { dispatch(Actions.homeSelectGridLayoutScreen()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

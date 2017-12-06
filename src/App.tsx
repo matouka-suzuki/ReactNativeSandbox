@@ -5,12 +5,15 @@
  */
 
 import * as React from 'react';
-import { } from 'react-native';
 import { StackNavigator } from 'react-navigation'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+import reducer from './reducers'
 
 import HomeScreen from './screens/HomeScreen'
 import ButtonScreen from './screens/ButtonScreen'
-import GridLayoutScreen from './screens/GridLayoutScreen';
+import GridLayoutScreen from './screens/GridLayoutScreen'
 
 interface Props { }
 interface State { }
@@ -21,11 +24,15 @@ const BasicApp = StackNavigator({
   Grid: { screen: GridLayoutScreen }
 })
 
+const store = createStore(reducer)
+
 export default class App extends React.Component<Props, State> {
 
   render() {
     return (
-      <BasicApp />
+      <Provider store={store}>
+        <BasicApp />
+      </Provider>
     );
   }
 
