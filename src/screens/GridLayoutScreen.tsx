@@ -14,7 +14,12 @@ interface Model {
   key: string
 }
 
-export default class GridLayout extends React.Component<Props, State> {
+export default class GridLayoutScreen extends React.Component<Props, State> {
+
+  // This is for React Navigation
+  static navigationOptions = {
+    title: "Grid layout"
+  }
 
   private data: Model[] = [
     { key: 'a' },

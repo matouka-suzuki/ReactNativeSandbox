@@ -9,11 +9,16 @@ interface Model {
   key: string
 }
 
-class Home extends React.Component<Props, State>{
+class HomeScreen extends React.Component<Props, State>{
+
+  // This is for React Navigation
+  static navigationOptions = {
+    title: "Welcome"
+  }
 
   private dataSource: Model[] = [
-    { key: 'OnlyButton' },
-    { key: 'GridFlatList' }
+    { key: 'Button' },
+    { key: 'Grid Layout Flatlist' }
   ]
 
   render() {
@@ -38,7 +43,15 @@ class Home extends React.Component<Props, State>{
 
   private _onSelectItem = (selectedIndex: number) => {
     console.log('ListItem was selected!! %d', selectedIndex)
+    switch (selectedIndex) {
+      case 0:
+        this.props.navigation.navigate("Button")
+        break
+      case 1:
+        this.props.navigation.navigate("Grid")
+        break
+    }
   }
 }
 
-export default Home
+export default HomeScreen
