@@ -26,13 +26,18 @@ class Home extends React.Component<Props, State>{
   }
 
   private _renderItem: ListRenderItem<Model> = item => {
+    let index = item.index
     return (
-      <ListItem title={item.item.key} selected={false} onPress={this._onSelectItem} />
+      <ListItem
+        index={index}         // set index to an item to get index of the item with onPress callback
+        title={item.item.key}
+        selected={false}
+        onPress={this._onSelectItem} />
     )
   }
 
-  private _onSelectItem = () => {
-    console.log('ListItem was selected!!')
+  private _onSelectItem = (selectedIndex: number) => {
+    console.log('ListItem was selected!! %d', selectedIndex)
   }
 }
 

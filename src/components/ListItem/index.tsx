@@ -2,9 +2,10 @@ import * as React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 interface Props {
+  index: number
   selected: Boolean
   title: string
-  onPress?: () => void
+  onPress?: (index: number) => void
 }
 interface State { }
 
@@ -26,7 +27,7 @@ export default class ListItem extends React.PureComponent<Props, State> {
 
   private _onPress = () => {
     if (this.props.onPress !== undefined) {
-      this.props.onPress()
+      this.props.onPress(this.props.index)
     }
   }
 }
