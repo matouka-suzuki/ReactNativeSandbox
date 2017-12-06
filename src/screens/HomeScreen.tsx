@@ -3,7 +3,7 @@ import { View, FlatList, ListRenderItem } from 'react-native'
 import { connect, Dispatch } from 'react-redux'
 import ListItem from '../components/ListItem'
 
-import * as Actions from '../actions/creators'
+import * as ActionCreators from '../redux/actions/creators'
 
 interface Props { }
 
@@ -74,8 +74,8 @@ const mapStateToProps = (state: any, ownProps?: Props): Props => {
 const mapDispatchToProps = (dispatch: any): DispatchProps => {
   return {
     // Need to pass an plain object to dispatch() to call action as prop's method.
-    handleSelectButtonEvent: () => { dispatch(Actions.homeSelectButton()) },
-    handleSelectGridLayoutEvent: () => { dispatch(Actions.homeSelectGridLayoutScreen()) }
+    handleSelectButtonEvent: () => { dispatch(ActionCreators.homeSelectButton()) },
+    handleSelectGridLayoutEvent: () => { dispatch(ActionCreators.homeSelectGridLayoutScreen()) }
   }
 }
 

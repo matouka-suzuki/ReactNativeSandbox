@@ -9,7 +9,7 @@ import { StackNavigator } from 'react-navigation'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-import reducer from './reducers'
+import reducer from './redux/reducers'
 
 import HomeScreen from './screens/HomeScreen'
 import ButtonScreen from './screens/ButtonScreen'
