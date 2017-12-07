@@ -1,6 +1,7 @@
 import HomeReducer from './HomeReducer'
-import { combineReducers } from 'redux';
+import { combineReducers, Reducer } from 'redux';
+import { Action } from 'redux';
 
 export default combineReducers({
-  home: HomeReducer
+  home: <Reducer<any>>HomeReducer
 })

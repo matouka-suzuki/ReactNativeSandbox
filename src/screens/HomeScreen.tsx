@@ -74,8 +74,8 @@ const mapStateToProps = (state: any, ownProps?: Props): Props => {
 const mapDispatchToProps = (dispatch: any): DispatchProps => {
   return {
     // Need to pass an plain object to dispatch() to call action as prop's method.
-    handleSelectButtonEvent: () => { dispatch(ActionCreators.homeSelectButton()) },
-    handleSelectGridLayoutEvent: () => { dispatch(ActionCreators.homeSelectGridLayoutScreen()) }
+    handleSelectButtonEvent: () => { dispatch(ActionCreators.createHomeSelectButtonAction({})) },
+    handleSelectGridLayoutEvent: () => { dispatch(ActionCreators.createHomeSelectGridLayoutAction({})) }
   }
 }
 
