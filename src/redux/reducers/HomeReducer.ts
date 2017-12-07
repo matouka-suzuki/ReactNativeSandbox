@@ -1,5 +1,10 @@
 import { Action as RdxAction } from 'redux'
-import { Action, isType, createHomeSelectButtonAction, createHomeSelectGridLayoutAction } from '../actions/creators'
+import {
+  Action,
+  isType,
+  createHomeSelectButtonAction,
+  createHomeSelectGridLayoutAction
+} from '../actions/creators'
 
 const INITIAL_STATE = {}
 
