@@ -4,6 +4,7 @@ import {
   Text,
   FlatList,
   ListRenderItem, // To specify type of datasource and to get index in rendering method.
+  Dimensions,
   StyleSheet
 } from 'react-native'
 
@@ -48,7 +49,7 @@ export default class GridLayoutScreen extends React.Component<Props, State> {
   private _renderItem: ListRenderItem<Model> = info => {
     const { index, item } = info
     return (
-      < View style={styles.item} >
+      < View style={[styles.item, this._dynamicStyleGridWidth()]} >
         <Text>{index}</Text>
         <Text>{item.key}</Text>
       </View >
@@ -59,6 +60,21 @@ export default class GridLayoutScreen extends React.Component<Props, State> {
     console.log('onEndReached', info.distanceFromEnd)
   }
 
+  /**
+   * Returns grid layout's width dynamically
+   */
+  private _dynamicStyleGridWidth = () => {
+    let { width } = Dimensions.get('screen')
+    let margin = 8
+    let styles = StyleSheet.create({
+      grid: {
+        margin: margin,
+        minWidth: 100,
+        maxWidth: (width - margin * 4) / 2
+      }
+    })
+    return styles.grid
+  }
 }
 
 const styles = StyleSheet.create({
@@ -68,9 +84,6 @@ const styles = StyleSheet.create({
   },
   item: {
     flex: 1,
-    margin: 5,
-    minWidth: 150,
-    maxWidth: 200,
     height: 304,
     maxHeight: 304,
     backgroundColor: '#CCC'
