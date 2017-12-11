@@ -11,17 +11,17 @@ import { Provider } from 'react-redux'
 
 import reducer from './redux/reducers'
 
-import HomeScreen from './screens/HomeScreen'
-import ButtonScreen from './screens/ButtonScreen'
-import GridLayoutScreen from './screens/GridLayoutScreen'
+import HomeContainer from './containers/HomeContainer'
+import ButtonContainer from './containers/ButtonContainer'
+import GridLayoutContainer from './containers/GridLayoutContainer'
 
 interface Props { }
 interface State { }
 
 const BasicApp = StackNavigator({
-  Main: { screen: HomeScreen },
-  Button: { screen: ButtonScreen },
-  Grid: { screen: GridLayoutScreen }
+  Main: { screen: HomeContainer },
+  Button: { screen: ButtonContainer },
+  Grid: { screen: GridLayoutContainer }
 })
 
 const store = createStore(reducer)
