@@ -14,6 +14,7 @@ import reducer from './redux/reducers'
 import HomeContainer from './containers/HomeContainer'
 import ButtonContainer from './containers/ButtonContainer'
 import GridLayoutContainer from './containers/GridLayoutContainer'
+import MondrianLayoutContainer from './containers/MondrianLayoutContainer'
 
 interface Props { }
 interface State { }
@@ -21,7 +22,8 @@ interface State { }
 const BasicApp = StackNavigator({
   Main: { screen: HomeContainer },
   Button: { screen: ButtonContainer },
-  Grid: { screen: GridLayoutContainer }
+  Grid: { screen: GridLayoutContainer },
+  Mondrian: { screen: MondrianLayoutContainer }
 })
 
 const store = createStore(reducer)

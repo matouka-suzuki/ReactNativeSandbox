@@ -11,6 +11,7 @@ interface Props { }
 interface DispatchProps {
   handleSelectButtonEvent: () => any
   handleSelectGridLayoutEvent: () => any
+  handleSelectMondrianLayoutEvent: () => any
 }
 interface State { }
 
@@ -27,7 +28,8 @@ class HomeScreen extends React.Component<Props & DispatchProps, State>{
 
   private dataSource: Model[] = [
     { key: 'Button' },
-    { key: 'Grid Layout Flatlist' }
+    { key: 'Grid Layout Flatlist' },
+    { key: 'Mondrian layout' }
   ]
 
   render() {
@@ -61,6 +63,9 @@ class HomeScreen extends React.Component<Props & DispatchProps, State>{
         this.props.handleSelectGridLayoutEvent() // call action
         this.props.navigation.navigate("Grid")
         break
+      case 2:
+        this.props.handleSelectMondrianLayoutEvent()
+        this.props.navigation.navigate("Mondrian")
     }
   }
 }
@@ -75,7 +80,8 @@ const mapDispatchToProps = (dispatch: any): DispatchProps => {
   return {
     // Need to pass an plain object to dispatch() to call action as prop's method.
     handleSelectButtonEvent: () => { dispatch(ActionCreators.createHomeSelectButtonAction({})) },
-    handleSelectGridLayoutEvent: () => { dispatch(ActionCreators.createHomeSelectGridLayoutAction({})) }
+    handleSelectGridLayoutEvent: () => { dispatch(ActionCreators.createHomeSelectGridLayoutAction({})) },
+    handleSelectMondrianLayoutEvent: () => { dispatch(ActionCreators.createHomeSelectMondrianLayoutAction({})) }
   }
 }
 

@@ -22,3 +22,4 @@ export const isType = <T>(action: Action<any>, actionCreator: ActionCreator<T>):
 /*--- Action Creator Definitions ---*/
 export const createHomeSelectButtonAction = actionCreator<any>(ActionTypes.HOME_SELECT_BUTTON)
 export const createHomeSelectGridLayoutAction = actionCreator<any>(ActionTypes.HOME_SELECT_GRID_LAYOUT)
+export const createHomeSelectMondrianLayoutAction = actionCreator<any>(ActionTypes.HOME_SELECT_MONDRIAN_LAYOUT)
